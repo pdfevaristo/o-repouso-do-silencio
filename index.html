@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Repouso do Silêncio — Poemas para desacelerar</title>
+  <meta name="description" content="Um refúgio de poesia. Poemas sobre amor, esperança, fé, saudade e silêncio, para ler devagar.">
+
+  <!-- Tipografia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Aplica o tema (claro/escuro) antes de a página desenhar, para não piscar -->
+  <script>
+    (function () {
+      var tema = localStorage.getItem("tema") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "escuro" : "claro");
+      document.documentElement.setAttribute("data-theme", tema);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ================= CAPA ================= -->
+  <main class="capa">
+    <p class="capa-ornamento" aria-hidden="true">✦ ✦ ✦</p>
+
+    <h1 class="capa-titulo">O Repouso do Silêncio</h1>
+
+    <p class="capa-frase">
+      «Há palavras que não pedem para ser lidas.<br>
+      Pedem apenas um coração disposto a escutá-las.»
+    </p>
+
+    <!-- O botão desvanece a página antes de abrir a biblioteca (js/script.js) -->
+    <a href="biblioteca.html" id="botaoEntrar" class="botao capa-botao">Entrar na Biblioteca</a>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
