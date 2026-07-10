@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca — O Repouso do Silêncio</title>
+  <meta name="description" content="A biblioteca de poemas de O Repouso do Silêncio: pesquise, filtre por categoria ou deixe o acaso escolher.">
+
+  <!-- Tipografia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Aplica o tema antes de a página desenhar, para não piscar -->
+  <script>
+    (function () {
+      var tema = localStorage.getItem("tema") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "escuro" : "claro");
+      document.documentElement.setAttribute("data-theme", tema);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ================= CABEÇALHO ================= -->
+  <header class="cabecalho">
+    <a class="cabecalho-marca" href="index.html">O Repouso do Silêncio</a>
+    <nav class="cabecalho-nav" aria-label="Navegação principal">
+      <a href="index.html">Início</a>
+      <a href="biblioteca.html" aria-current="page">Biblioteca</a>
+      <a href="sobre.html">Sobre</a>
+      <button id="botaoTema" class="botao-tema" type="button" aria-label="Alternar tema">☾</button>
+    </nav>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- ================= VERSO DO DIA ================= -->
+    <section class="verso-do-dia" aria-label="Verso do dia">
+      <span class="rotulo">Verso do dia</span>
+      <blockquote id="versoDoDia"></blockquote>
+    </section>
+
+    <!-- ================= FERRAMENTAS ================= -->
+    <div class="ferramentas">
+      <!-- Pesquisa instantânea por título e descrição -->
+      <input
+        type="search"
+        id="campoPesquisa"
+        class="campo-pesquisa"
+        placeholder="Procurar um poema pelo título…"
+        aria-label="Pesquisar poemas">
+      <!-- Um poema escolhido ao acaso -->
+      <button id="poemaAleatorio" class="botao botao-secundario" type="button">Poema aleatório</button>
+    </div>
+
+    <!-- Filtros por categoria (preenchidos por js/biblioteca.js) -->
+    <div class="categorias" id="categorias" aria-label="Filtrar por categoria"></div>
+
+    <!-- ================= GRELHA DE POEMAS ================= -->
+    <section class="grelha" id="grelha" aria-label="Poemas"></section>
+
+  </main>
+
+  <!-- ================= MODAL DO POEMA (Opção A) ================= -->
+  <div id="modalPoema" class="modal-poema" style="display: none;">
+    <div class="modal-overlay" onclick="fecharModal()"></div>
+    <div class="modal-conteudo">
+      <!-- Barra de progresso -->
+      <div class="barra-progresso" id="barraProgressoModal" aria-hidden="true"></div>
+
+      <button onclick="fecharModal()" class="modal-fechar" aria-label="Fechar poema">✕</button>
+
+      <div id="conteudoPoema" class="folha"></div>
+
+      <!-- Navegação -->
+      <nav class="poema-navegacao" style="max-width: 720px; margin: 2rem auto 0;">
+        <button onclick="fecharModal()" class="botao botao-secundario">← Voltar à Biblioteca</button>
+        <div class="grupo">
+          <button id="modalAnterior" onclick="navegarPoema(-1)" class="botao botao-secundario">Anterior</button>
+          <button id="modalProximo" onclick="navegarPoema(1)" class="botao">Próximo</button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer class="rodape">
+    <p>«Alguns poemas não foram escritos para impressionar.<br>
+    Foram escritos para encontrar alguém que também sentia o mesmo.»</p>
+    <span class="rotulo">O Repouso do Silêncio</span>
+  </footer>
+
+  <!-- Botão voltar ao topo -->
+  <button id="voltarTopo" class="voltar-topo" type="button" aria-label="Voltar ao topo">↑</button>
+
+  <script src="js/poemas.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/biblioteca.js"></script>
+</body>
+</html>
